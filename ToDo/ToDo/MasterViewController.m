@@ -26,8 +26,6 @@
     // Do any additional setup after loading the view, typically from a nib.
     self.navigationItem.leftBarButtonItem = self.editButtonItem;
 
-//    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
-//    self.navigationItem.rightBarButtonItem = addButton;
     self.detailViewController = (DetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
 }
 
@@ -41,7 +39,24 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)checkBoxTapped:(UIButton *)sender {
+- (IBAction)checkMarkButtonTapped:(UIButton *)sender {
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:sender.tag inSection:0];
+    NSManagedObject *object = [[self fetchedResultsController] objectAtIndexPath:indexPath];
+    [object setValue:[NSNumber numberWithBool:sender.selected] forKey:@"done"];
+    NSError *error;
+    if (![self.managedObjectContext save:&error]) {
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+        abort();
+    }
+    if (sender.selected) {
+        [sender setSelected:NO];
+    } else {
+        [sender setSelected:YES];
+    }
+}
+
+- (void)markItemCompleted:(BOOL)completed {
+    
 }
 
 #pragma mark - Segues
@@ -102,7 +117,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     ToDoTableViewCell *cell = (ToDoTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"ToDoCell" forIndexPath:indexPath];
     NSManagedObject *object = [[self fetchedResultsController] objectAtIndexPath:indexPath];
-    [self configureCell:cell withObject:object];
+    [self configureCell:cell atIndexPath:indexPath withObject:object];
     return cell;
 }
 
@@ -126,12 +141,15 @@
     }
 }
 
-- (void)configureCell:(ToDoTableViewCell *)cell withObject:(NSManagedObject *)object {
+- (void)configureCell:(ToDoTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withObject:(NSManagedObject *)object {
+    cell.checkMarkButton.tag = indexPath.row;
     if ([object valueForKey:@"done"]) {
+        cell.checkMarkButton.selected = YES;
         NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:[object valueForKey:@"title"]];
         [attributedString addAttribute:NSStrikethroughStyleAttributeName value:@2 range:NSMakeRange(0, attributedString.length)];
         cell.titleLabel.text = [attributedString string];
     } else {
+        cell.checkMarkButton.selected = NO; 
         cell.titleLabel.text = [object valueForKey:@"title"];
     }
     if ([object valueForKey:@"dueDate"]) {
@@ -220,7 +238,7 @@
             break;
             
         case NSFetchedResultsChangeUpdate:
-            [self configureCell:[tableView cellForRowAtIndexPath:indexPath] withObject:anObject];
+            [self configureCell:[tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath withObject:anObject];
             break;
             
         case NSFetchedResultsChangeMove:

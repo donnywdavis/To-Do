@@ -7,7 +7,6 @@
 //
 
 #import "ToDoTableViewCell.h"
-#import "MasterViewController.h"
 
 @implementation ToDoTableViewCell
 
@@ -20,15 +19,6 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
-}
-
-- (IBAction)checkMarkButtonTapped:(UIButton *)sender {
-    
-    if (sender.selected) {
-        [sender setSelected:NO];
-    } else {
-        [sender setSelected:YES];
-    }
 }
 
 @end
