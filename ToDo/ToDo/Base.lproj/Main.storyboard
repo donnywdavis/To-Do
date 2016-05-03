@@ -81,7 +81,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="Arm-wq-HPj" detailTextLabel="VFY-jR-r7d" style="IBUITableViewCellStyleSubtitle" id="WCw-Qf-5nD">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ToDoCell" textLabel="Arm-wq-HPj" detailTextLabel="VFY-jR-r7d" style="IBUITableViewCellStyleSubtitle" id="WCw-Qf-5nD">
                                 <rect key="frame" x="0.0" y="86" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WCw-Qf-5nD" id="37f-cq-3Eg">
@@ -142,6 +142,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YRm-Pf-FrD">
+                                <rect key="frame" x="20" y="76" width="34" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Due Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dwp-sC-F2M">
                                 <rect key="frame" x="20" y="122" width="72" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -177,16 +183,16 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OMN-eG-2MC">
                                 <rect key="frame" x="100" y="189" width="480" height="391"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
                             </textView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YRm-Pf-FrD">
-                                <rect key="frame" x="20" y="76" width="34" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cYC-DV-TcR">
+                                <rect key="frame" x="258" y="118" width="73" height="30"/>
+                                <state key="normal" title="Clear Date"/>
+                                <connections>
+                                    <action selector="clearDateAction:" destination="fcS-Js-aj1" eventType="touchUpInside" id="Ez8-dp-s7g"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -199,9 +205,11 @@
                             <constraint firstItem="wKr-Vb-jHd" firstAttribute="trailing" secondItem="Lfi-HV-Hyy" secondAttribute="trailingMargin" id="LtC-kq-1Qp"/>
                             <constraint firstItem="YRm-Pf-FrD" firstAttribute="leading" secondItem="Lfi-HV-Hyy" secondAttribute="leadingMargin" id="NjE-2q-AH4"/>
                             <constraint firstItem="wKr-Vb-jHd" firstAttribute="leading" secondItem="YRm-Pf-FrD" secondAttribute="trailing" constant="46" id="SmL-Ys-DNm"/>
+                            <constraint firstItem="cYC-DV-TcR" firstAttribute="leading" secondItem="Ljb-nw-vYo" secondAttribute="trailing" constant="8" id="Y99-Qn-Jbe"/>
                             <constraint firstItem="OrR-d7-0eZ" firstAttribute="top" secondItem="OMN-eG-2MC" secondAttribute="bottom" constant="20" id="Zb0-CY-II0"/>
                             <constraint firstItem="zZp-b9-I0K" firstAttribute="top" secondItem="dwp-sC-F2M" secondAttribute="bottom" constant="46" id="mHg-fN-3QX"/>
                             <constraint firstItem="zZp-b9-I0K" firstAttribute="leading" secondItem="Lfi-HV-Hyy" secondAttribute="leadingMargin" id="nSH-4Y-O67"/>
+                            <constraint firstItem="cYC-DV-TcR" firstAttribute="top" secondItem="wKr-Vb-jHd" secondAttribute="bottom" constant="16" id="ra4-Lz-uhq"/>
                             <constraint firstItem="YRm-Pf-FrD" firstAttribute="top" secondItem="cdA-6R-NsJ" secondAttribute="bottom" constant="12" id="tpx-Bs-z7Y"/>
                             <constraint firstItem="dwp-sC-F2M" firstAttribute="leading" secondItem="Lfi-HV-Hyy" secondAttribute="leadingMargin" id="uz8-ts-vo8"/>
                             <constraint firstItem="OMN-eG-2MC" firstAttribute="leading" secondItem="zZp-b9-I0K" secondAttribute="trailing" constant="34" id="wqP-sc-9S7"/>
@@ -220,6 +228,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="clearDateButton" destination="cYC-DV-TcR" id="GSq-Z4-uaN"/>
                         <outlet property="dueDateTextField" destination="Ljb-nw-vYo" id="gPL-Vq-v0S"/>
                         <outlet property="notesTextView" destination="OMN-eG-2MC" id="JkP-an-F4J"/>
                         <outlet property="titleTextField" destination="wKr-Vb-jHd" id="Fju-GC-KN0"/>

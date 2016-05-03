@@ -61,7 +61,10 @@
     [newManagedObject setValue:newItemPVC.titleTextField.text forKey:@"title"];
     [newManagedObject setValue:@NO forKey:@"done"];
     if (![newItemPVC.dueDateTextField.text isEqualToString:@""]) {
-        [newManagedObject setValue:[NSDate date] forKey:@"dueDate"];
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        NSString *formatString = [NSDateFormatter dateFormatFromTemplate:@"MMddyy" options:0 locale:[NSLocale currentLocale]];
+        [dateFormatter setDateFormat:formatString];
+        [newManagedObject setValue:[dateFormatter dateFromString:newItemPVC.dueDateTextField.text] forKey:@"dueDate"];
     } else {
         [newManagedObject setValue:nil forKey:@"dueDate"];
     }
@@ -127,7 +130,7 @@
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
         NSString *formatString = [NSDateFormatter dateFormatFromTemplate:@"MMddyy" options:0 locale:[NSLocale currentLocale]];
         [dateFormatter setDateFormat:formatString];
-        cell.detailTextLabel.text = [dateFormatter stringFromDate:[object valueForKey:@"dueDate"]];
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"Due Date: %@", [dateFormatter stringFromDate:[object valueForKey:@"dueDate"]]];
     } else {
         cell.detailTextLabel.text = @"";
     }
@@ -150,7 +153,7 @@
     [fetchRequest setFetchBatchSize:20];
     
     // Edit the sort key as appropriate.
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"done" ascending:NO];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"dueDate" ascending:NO];
 
     [fetchRequest setSortDescriptors:@[sortDescriptor]];
     
