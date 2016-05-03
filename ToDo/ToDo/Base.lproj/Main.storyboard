@@ -133,7 +133,7 @@
         <!--New Item-->
         <scene sceneID="VBN-k9-PY1">
             <objects>
-                <viewController id="fcS-Js-aj1" sceneMemberID="viewController">
+                <viewController id="fcS-Js-aj1" customClass="NewItemPopoverViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="cdA-6R-NsJ"/>
                         <viewControllerLayoutGuide type="bottom" id="OrR-d7-0eZ"/>
