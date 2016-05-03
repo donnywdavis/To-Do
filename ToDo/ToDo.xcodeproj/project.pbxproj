@@ -16,6 +16,7 @@
 		41E03B5F1CD90159005822C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 41E03B5E1CD90159005822C3 /* Assets.xcassets */; };
 		41E03B621CD90159005822C3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41E03B601CD90159005822C3 /* LaunchScreen.storyboard */; };
 		41E03B6E1CD90FD5005822C3 /* NewItemPopoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 41E03B6D1CD90FD5005822C3 /* NewItemPopoverViewController.m */; };
+		41E03B711CD9362E005822C3 /* ToDoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 41E03B701CD9362E005822C3 /* ToDoTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,8 @@
 		41E03B631CD90159005822C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		41E03B6C1CD90FD5005822C3 /* NewItemPopoverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewItemPopoverViewController.h; sourceTree = "<group>"; };
 		41E03B6D1CD90FD5005822C3 /* NewItemPopoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewItemPopoverViewController.m; sourceTree = "<group>"; };
+		41E03B6F1CD9362E005822C3 /* ToDoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToDoTableViewCell.h; sourceTree = "<group>"; };
+		41E03B701CD9362E005822C3 /* ToDoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToDoTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +73,8 @@
 				41E03B501CD90159005822C3 /* AppDelegate.m */,
 				41E03B551CD90159005822C3 /* MasterViewController.h */,
 				41E03B561CD90159005822C3 /* MasterViewController.m */,
+				41E03B6F1CD9362E005822C3 /* ToDoTableViewCell.h */,
+				41E03B701CD9362E005822C3 /* ToDoTableViewCell.m */,
 				41E03B581CD90159005822C3 /* DetailViewController.h */,
 				41E03B591CD90159005822C3 /* DetailViewController.m */,
 				41E03B6C1CD90FD5005822C3 /* NewItemPopoverViewController.h */,
@@ -165,6 +170,7 @@
 			files = (
 				41E03B5A1CD90159005822C3 /* DetailViewController.m in Sources */,
 				41E03B571CD90159005822C3 /* MasterViewController.m in Sources */,
+				41E03B711CD9362E005822C3 /* ToDoTableViewCell.m in Sources */,
 				41E03B6E1CD90FD5005822C3 /* NewItemPopoverViewController.m in Sources */,
 				41E03B511CD90159005822C3 /* AppDelegate.m in Sources */,
 				41E03B541CD90159005822C3 /* ToDo.xcdatamodeld in Sources */,

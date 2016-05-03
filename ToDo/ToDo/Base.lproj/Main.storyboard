@@ -81,31 +81,52 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ToDoCell" textLabel="Arm-wq-HPj" detailTextLabel="VFY-jR-r7d" style="IBUITableViewCellStyleSubtitle" id="WCw-Qf-5nD">
-                                <rect key="frame" x="0.0" y="86" width="600" height="44"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ToDoCell" rowHeight="75" id="WCw-Qf-5nD" customClass="ToDoTableViewCell">
+                                <rect key="frame" x="0.0" y="86" width="600" height="75"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WCw-Qf-5nD" id="37f-cq-3Eg">
-                                    <rect key="frame" x="0.0" y="0.0" width="567" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="567" height="74.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Arm-wq-HPj">
-                                            <rect key="frame" x="15" y="6" width="31.5" height="19.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UAE-Ga-lT0">
+                                            <rect key="frame" x="8" y="22.5" width="30" height="30"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="30" id="cPk-CE-sc8"/>
+                                                <constraint firstAttribute="height" constant="30" id="uxs-hf-nNw"/>
+                                            </constraints>
+                                            <state key="normal" image="unchecked"/>
+                                            <state key="selected" image="checked"/>
+                                            <connections>
+                                                <action selector="checkMarkButtonTapped:" destination="WCw-Qf-5nD" eventType="touchUpInside" id="hiY-xS-sCz"/>
+                                            </connections>
+                                        </button>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="atN-za-rFx">
+                                            <rect key="frame" x="46" y="8" width="28.5" height="17"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="VFY-jR-r7d">
-                                            <rect key="frame" x="15" y="25.5" width="40.5" height="13.5"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Due Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QEa-3e-UZE">
+                                            <rect key="frame" x="46" y="54.5" width="45" height="12"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="UAE-Ga-lT0" firstAttribute="centerY" secondItem="37f-cq-3Eg" secondAttribute="centerY" id="C3d-mt-fhm"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="QEa-3e-UZE" secondAttribute="bottom" id="Fxx-6v-3Ss"/>
+                                        <constraint firstItem="atN-za-rFx" firstAttribute="top" secondItem="37f-cq-3Eg" secondAttribute="topMargin" id="IXW-ZX-CtG"/>
+                                        <constraint firstItem="atN-za-rFx" firstAttribute="leading" secondItem="UAE-Ga-lT0" secondAttribute="trailing" constant="8" id="T3s-i5-iDc"/>
+                                        <constraint firstItem="UAE-Ga-lT0" firstAttribute="leading" secondItem="37f-cq-3Eg" secondAttribute="leadingMargin" id="lkh-KX-I1w"/>
+                                        <constraint firstItem="QEa-3e-UZE" firstAttribute="leading" secondItem="UAE-Ga-lT0" secondAttribute="trailing" constant="8" id="nA9-tm-LyX"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
+                                    <outlet property="checkMarkButton" destination="UAE-Ga-lT0" id="TKV-5U-5fM"/>
+                                    <outlet property="dueDateLabel" destination="QEa-3e-UZE" id="tcn-wB-GXe"/>
+                                    <outlet property="titleLabel" destination="atN-za-rFx" id="o9P-Oh-jc9"/>
                                     <segue destination="vC3-pB-5Vb" kind="showDetail" identifier="showDetail" id="6S0-TO-JiA"/>
                                 </connections>
                             </tableViewCell>
@@ -273,6 +294,10 @@
             <point key="canvasLocation" x="1446" y="-630"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="checked" width="256" height="256"/>
+        <image name="unchecked" width="256" height="256"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="6S0-TO-JiA"/>
     </inferredMetricsTieBreakers>

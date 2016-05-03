@@ -7,10 +7,15 @@
 //
 
 #import "MasterViewController.h"
+#import "ToDoTableViewCell.h"
 #import "DetailViewController.h"
 #import "NewItemPopoverViewController.h"
 
 @interface MasterViewController ()
+
+@property (weak, nonatomic) IBOutlet UIButton *checkMarkButton;
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *dueDateLabel;
 
 @end
 
@@ -34,6 +39,9 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)checkBoxTapped:(UIButton *)sender {
 }
 
 #pragma mark - Segues
@@ -92,7 +100,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    ToDoTableViewCell *cell = (ToDoTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"ToDoCell" forIndexPath:indexPath];
     NSManagedObject *object = [[self fetchedResultsController] objectAtIndexPath:indexPath];
     [self configureCell:cell withObject:object];
     return cell;
@@ -118,21 +126,21 @@
     }
 }
 
-- (void)configureCell:(UITableViewCell *)cell withObject:(NSManagedObject *)object {
+- (void)configureCell:(ToDoTableViewCell *)cell withObject:(NSManagedObject *)object {
     if ([object valueForKey:@"done"]) {
         NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:[object valueForKey:@"title"]];
         [attributedString addAttribute:NSStrikethroughStyleAttributeName value:@2 range:NSMakeRange(0, attributedString.length)];
-        cell.textLabel.text = [attributedString string];
+        cell.titleLabel.text = [attributedString string];
     } else {
-        cell.textLabel.text = [object valueForKey:@"title"];
+        cell.titleLabel.text = [object valueForKey:@"title"];
     }
     if ([object valueForKey:@"dueDate"]) {
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
         NSString *formatString = [NSDateFormatter dateFormatFromTemplate:@"MMddyy" options:0 locale:[NSLocale currentLocale]];
         [dateFormatter setDateFormat:formatString];
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"Due Date: %@", [dateFormatter stringFromDate:[object valueForKey:@"dueDate"]]];
+        cell.dueDateLabel.text = [NSString stringWithFormat:@"Due Date: %@", [dateFormatter stringFromDate:[object valueForKey:@"dueDate"]]];
     } else {
-        cell.detailTextLabel.text = @"";
+        cell.dueDateLabel.text = @"";
     }
 }
 
