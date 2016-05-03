@@ -10,4 +10,9 @@
 
 @interface NewItemPopoverViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UITextField *titleTextField;
+@property (weak, nonatomic) IBOutlet UITextField *dueDateTextField;
+@property (weak, nonatomic) IBOutlet UITextView *notesTextView;
+
+
 @end

@@ -169,14 +169,17 @@
                                     <constraint firstAttribute="height" constant="30" id="n4p-hb-rQd"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                <connections>
+                                    <outlet property="delegate" destination="fcS-Js-aj1" id="MUM-H3-wHD"/>
+                                </connections>
                             </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OMN-eG-2MC">
                                 <rect key="frame" x="100" y="189" width="480" height="391"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YRm-Pf-FrD">
                                 <rect key="frame" x="20" y="76" width="34" height="21"/>
@@ -205,11 +208,25 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="New Item" id="90P-a9-VVV">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="AsN-Hn-0Vg"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="Dfa-g4-jdP"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="AsN-Hn-0Vg">
+                            <connections>
+                                <action selector="cancelAction:" destination="fcS-Js-aj1" id="PO5-IL-iqh"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="Dfa-g4-jdP">
+                            <connections>
+                                <segue destination="KUU-kj-gaf" kind="unwind" unwindAction="insertNewObject:" id="jzo-yV-FRb"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="dueDateTextField" destination="Ljb-nw-vYo" id="gPL-Vq-v0S"/>
+                        <outlet property="notesTextView" destination="OMN-eG-2MC" id="JkP-an-F4J"/>
+                        <outlet property="titleTextField" destination="wKr-Vb-jHd" id="Fju-GC-KN0"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hts-Tc-7ea" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="KUU-kj-gaf" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2258" y="-630"/>
         </scene>
