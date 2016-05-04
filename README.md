@@ -18,3 +18,5 @@
 * Ordering by completed or due date
 * Button to clear all completed items
 * Set the date when date picker is shown without having to scroll first
+* Highlight cell red when it is past due date
+* Highlight cell yellow if due date equals current date
