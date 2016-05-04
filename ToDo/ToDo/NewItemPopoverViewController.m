@@ -13,6 +13,9 @@
 @property (strong, nonatomic) UIDatePicker *dueDatePicker;
 @property (weak, nonatomic) IBOutlet UIButton *clearDateButton;
 
+@property (strong, nonatomic) NSDateFormatter *dateFormatter;
+@property (strong, nonatomic) NSString *formatString;
+
 @end
 
 @implementation NewItemPopoverViewController
@@ -20,6 +23,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.dateFormatter = [[NSDateFormatter alloc] init];
+    self.formatString = [NSDateFormatter dateFormatFromTemplate:@"MMddyy" options:0 locale:[NSLocale currentLocale]];
+    [self.dateFormatter setDateFormat:self.formatString];
     
     self.dueDatePicker = [[UIDatePicker alloc] init];
     [self.dueDatePicker addTarget:self action:@selector(dueDateChanged) forControlEvents:UIControlEventValueChanged];
@@ -35,10 +42,7 @@
 }
 
 - (void)dueDateChanged {
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    NSString *formatString = [NSDateFormatter dateFormatFromTemplate:@"MMddyy" options:0 locale:[NSLocale currentLocale]];
-    [dateFormatter setDateFormat:formatString];
-    self.dueDateTextField.text = [dateFormatter stringFromDate:self.dueDatePicker.date];
+    self.dueDateTextField.text = [self.dateFormatter stringFromDate:self.dueDatePicker.date];
     self.clearDateButton.enabled = YES;
 }
 
@@ -59,10 +63,7 @@
         if ([self.dueDateTextField.text isEqualToString:@""]) {
             [self.dueDatePicker setDate:[NSDate date] animated:YES];
         } else {
-            NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-            NSString *formatString = [NSDateFormatter dateFormatFromTemplate:@"MMddyy" options:0 locale:[NSLocale currentLocale]];
-            [dateFormatter setDateFormat:formatString];
-            [self.dueDatePicker setDate:[dateFormatter dateFromString:self.dueDateTextField.text] animated:YES];
+            [self.dueDatePicker setDate:[self.dateFormatter dateFromString:self.dueDateTextField.text] animated:YES];
         }
     }
 }

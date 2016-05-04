@@ -7,11 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MasterViewController.h"
 
 @interface DetailViewController : UIViewController
 
-@property (strong, nonatomic) id detailItem;
-@property (weak, nonatomic) IBOutlet UILabel *detailDescriptionLabel;
+@property (strong, nonatomic) NSManagedObject *detailItem;
+@property (weak, nonatomic) IBOutlet UITextField *titleTextField;
+@property (weak, nonatomic) IBOutlet UITextField *dueDateTextField;
+@property (weak, nonatomic) IBOutlet UITextView *notesTextView;
+@property (weak, nonatomic) MasterViewController *masterVC;
 
 @end
 
